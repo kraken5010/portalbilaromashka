@@ -1,0 +1,18 @@
+<title>Департамент Бухгалтерія</title>
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class="post-content">
+    {% for acc in accounting %}
+        <div class="article-top">
+            <p class="cats-name">{{ acc.dep }}: <span>{{ acc.title }}</span></p>
+            <p class="cats-date">Опубліковано: {{ acc.time_create }}</p>
+        </div>
+        <div class="article-content">
+            {{ acc.content | safe }}
+        </div>
+    {% endfor %}
+</section>
+
+{% endblock content %}

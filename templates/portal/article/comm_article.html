@@ -1,0 +1,18 @@
+<title>Департамент Комерційний</title>
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <section class="post-content">
+    {% for com in commercial %}
+        <div class="article-top">
+            <p class="cats-name">{{ com.dep }}: <span>{{ com.title }}</span></p>
+            <p class="cats-date">Опубліковано: {{ com.time_create }}</p>
+        </div>
+        <div class="article-content">
+            {{ com.content | safe }}
+        </div>
+    {% endfor %}
+</section>
+
+{% endblock content %}

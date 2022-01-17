@@ -1,0 +1,46 @@
+<title>Структура департаменту з персоналу</title>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="present-dep">
+    <h1 class="dep-title">Структура департаменту з персоналу</h1>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for pers in view.get_personnel_structure %}
+                <div class="swiper-slide">
+                    <div class="card-box">
+                        {% if pers.photo %}
+                            <img src="{{ pers.photo.url}}" alt="">
+                        {% else %}
+                            <img src="{% static 'images/if_no_photo.png' %}" alt="">
+                        {% endif %}
+                        <div class="info-person">
+                            <h2 class="person-name">
+                                {{ pers.full_name }}
+                            </h2>
+                            <h2 class="position">
+                                {{ pers.position }}
+                            </h2>
+                            <p>моб.тел.: <a href="tel:{{ pers.phone }}">
+                                {{ pers.phone }}
+                            </a></p>
+                            <p>e-mail: <a href="mailto:{{ pers.email }}" target="_blank">
+                                {{ pers.email }}
+                            </a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+{% endblock content %}

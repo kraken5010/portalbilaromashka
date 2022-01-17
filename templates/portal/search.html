@@ -1,0 +1,29 @@
+<title>Пошук</title>
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="post-content">
+    <h1 style="text-align:center; font-size: 1.5em; line-height: 1em; padding: 0 5px 10px;">Результат пошуку</h1>
+    {% if object_list %}
+        <ul class="article-list">
+            {% for article in object_list %}
+            <li class="article-item">
+                <div class="article-top">
+                    <p class="cats-name">{{ article.dep }}: <span>{{ article.title }}</span></p>
+                    <p class="cats-date">Опубліковано: {{ article.time_create }}</p>
+                </div>
+                <div class="article-content">
+                    <p>{{ article.content | safe | truncatechars_html:200}}</p>
+                    <a class="show-art" href="{{ article.get_absolute_url }}" title="Открыть">Детальніше</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>Не знайдено публікацій на ваш запит
+    {% endif %}
+
+{% endblock content %}

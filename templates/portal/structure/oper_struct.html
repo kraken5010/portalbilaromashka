@@ -1,0 +1,46 @@
+<title>Структура операційного департаменту</title>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="present-dep">
+    <h1 class="dep-title">Структура операційного департаменту</h1>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for oper in view.get_operations_structure %}
+                <div class="swiper-slide">
+                    <div class="card-box">
+                        {% if oper.photo %}
+                            <img src="{{ oper.photo.url}}" alt="">
+                        {% else %}
+                            <img src="{% static 'images/if_no_photo.png' %}" alt="">
+                        {% endif %}
+                        <div class="info-person">
+                            <h2 class="person-name">
+                                {{ oper.full_name }}
+                            </h2>
+                            <h2 class="position">
+                                {{ oper.position }}
+                            </h2>
+                            <p>моб.тел.: <a href="tel:{{ oper.phone }}">
+                                {{ oper.phone }}
+                            </a></p>
+                            <p>e-mail: <a href="mailto:{{ oper.email }}" target="_blank">
+                                {{ oper.email }}
+                            </a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+{% endblock content %}

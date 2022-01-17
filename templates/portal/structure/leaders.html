@@ -1,0 +1,46 @@
+<title>Керівництво компанії Bilaromashka</title>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="present-dep">
+    <h1 class="dep-title">Керівництво компанії Bilaromashka</h1>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for leader in view.get_leaders %}
+                <div class="swiper-slide">
+                    <div class="card-box">
+                        {% if leader.photo %}
+                            <img src="{{ leader.photo.url}}" alt="">
+                        {% else %}
+                            <img src="{% static 'images/if_no_photo.png' %}" alt="">
+                        {% endif %}
+                        <div class="info-person">
+                            <h2 class="person-name">
+                                {{ leader.full_name }}
+                            </h2>
+                            <h2 class="position">
+                                {{ leader.position }}
+                            </h2>
+                            <p>моб.тел.: <a href="tel:{{ leader.phone }}">
+                                {{ leader.phone }}
+                            </a></p>
+                            <p>e-mail: <a href="mailto:{{ leader.email }}" target="_blank">
+                                {{ leader.email }}
+                            </a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+{% endblock content %}

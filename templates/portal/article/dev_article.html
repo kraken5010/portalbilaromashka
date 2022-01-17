@@ -1,0 +1,19 @@
+<title>Департамент Розвитку</title>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="post-content">
+    {% for dev in development %}
+        <div class="article-top">
+            <p class="cats-name">{{ dev.dep }}: <span>{{ dev.title }}</span></p>
+            <p class="cats-date">Опубліковано: {{ dev.time_create }}</p>
+        </div>
+        <h1>{{ dev.title }}</h1>
+        <div class="article-content">
+            {{ dev.content | safe }}
+        </div>
+    {% endfor %}
+</section>
+
+{% endblock content %}

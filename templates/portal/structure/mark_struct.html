@@ -1,0 +1,46 @@
+<title>Структура департаменту маркетингу</title>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="present-dep">
+    <h1 class="dep-title">Структура департаменту маркетингу</h1>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for mark in view.get_marketing_structure %}
+                <div class="swiper-slide">
+                    <div class="card-box">
+                        {% if mark.photo %}
+                            <img src="{{ mark.photo.url}}" alt="">
+                        {% else %}
+                            <img src="{% static 'images/if_no_photo.png' %}" alt="">
+                        {% endif %}
+                        <div class="info-person">
+                            <h2 class="person-name">
+                                {{ mark.full_name }}
+                            </h2>
+                            <h2 class="position">
+                                {{ mark.position }}
+                            </h2>
+                            <p>моб.тел.: <a href="tel:{{ mark.phone }}">
+                                {{ mark.phone }}
+                            </a></p>
+                            <p>e-mail: <a href="mailto:{{ mark.email }}" target="_blank">
+                                {{ mark.email }}
+                            </a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+{% endblock content %}

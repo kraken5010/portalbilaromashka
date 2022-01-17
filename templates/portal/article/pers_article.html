@@ -1,0 +1,18 @@
+<title>Департмент з Персоналу</title>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="post-content">
+    {% for pers in personnel %}
+        <div class="article-top">
+            <p class="cats-name">{{ pers.dep }}: <span>{{ pers.title }}</span></p>
+            <p class="cats-date">Опубліковано: {{ pers.time_create }}</p>
+        </div>
+        <div class="article-content">
+            {{ pers.content | safe }}
+        </div>
+    {% endfor %}
+</section>
+
+{% endblock content %}

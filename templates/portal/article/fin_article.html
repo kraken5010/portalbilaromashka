@@ -1,0 +1,19 @@
+<title>Департамент Фінансовий</title>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="post-content">
+    {% for fin in financial %}
+        <div class="article-top">
+        <p class="cats-name">{{ fin.dep }}: <span>{{ fin.title }}</span></p>
+        <p class="cats-date">Опубліковано: {{ fin.time_create }}</p>
+    </div>
+    <h1>{{ fin.title }}</h1>
+    <div class="article-content">
+        {{ fin.content | safe }}
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock content %}

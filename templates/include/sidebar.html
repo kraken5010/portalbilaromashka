@@ -1,0 +1,138 @@
+{% load cache %}
+
+{% cache 180 sidebar %}
+
+<div class="nav">
+    <ul class="menu">
+        <li class="list">
+            <a>
+                Комерційний
+                <b></b>
+                <b></b>
+            </a>
+            <ul class="sub-menu">
+                <li><a href="{% url 'comm_structure' %}">Структура департаменту</a></li>
+                {% for comm_art in view.get_commercial_atricles %}
+                    <li><a href="{{ comm_art.get_absolute_url }}">
+                        {{ comm_art.title }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="list">
+            <a>
+                Операційний
+                <b></b>
+                <b></b>
+            </a>
+            <ul class="sub-menu">
+            <li><a href="{% url 'oper_structure' %}">Структура департаменту</a></li>
+                {% for oper_art in view.get_operations_atricles %}
+                    <li><a href="{{ oper_art.get_absolute_url }}">
+                        {{ oper_art.title }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="list">
+            <a>
+                Бухгалтерія
+                <b></b>
+                <b></b>
+            </a>
+            <ul class="sub-menu">
+            <li><a href="{% url 'acc_structure' %}">Структура департаменту</a></li>
+                {% for acc_art in view.get_accounting_atricles %}
+                    <li><a href="{{ acc_art.get_absolute_url }}">
+                        {{ acc_art.title }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="list">
+                <a>
+                    Фінансовий
+                    <b></b>
+                    <b></b>
+                </a>
+                <ul class="sub-menu">
+                <li><a href="{% url 'fin_structure' %}">Структура департаменту</a></li>
+                    {% for fin_art in view.get_financial_atricles %}
+                        <li><a href="{{ fin_art.get_absolute_url }}">{{ fin_art.title }}
+                        </a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        <li class="list">
+            <a>
+                Розвиток
+                <b></b>
+                <b></b>
+            </a>
+            <ul class="sub-menu">
+            <li><a href="{% url 'dev_structure' %}">Структура департаменту</a></li>
+                {% for dev_art in view.get_development_atricles %}
+                    <li><a href="{{ dev_art.get_absolute_url }}">
+                        {{ dev_art.title }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="list">
+            <a>
+                IT
+                <b></b>
+                <b></b>
+            </a>
+            <ul class="sub-menu">
+            <li><a href="{% url 'it_structure' %}">Структура департаменту</a></li>
+                {% for it_art in view.get_it_atricles %}
+                    <li><a href="{{ it_art.get_absolute_url }}">
+                        {{ it_art.title }}
+                    </a></li>
+                {% endfor %}
+                <li><a href="http://apteka.fozzy.lan/webservice/WorkTimeError.php" target="_blank">Контроль рабочего времени</a></li>
+            </ul>
+        </li>
+        <li class="list">
+            <a>
+                Персонал
+                <b></b>
+                <b></b>
+            </a>
+            <ul class="sub-menu">
+            <li><a href="{% url 'pers_structure' %}">Структура департаменту</a></li>
+                {% for pers_art in view.get_personnel_atricles %}
+                    <li><a href="{{ pers_art.get_absolute_url }}">
+                        {{ pers_art.title }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="list">
+            <a>
+                Маркетинг
+                <b></b>
+                <b></b>
+            </a>
+            <ul class="sub-menu">
+            <li><a href="{% url 'mark_structure' %}">Структура департаменту</a></li>
+                {% for mark_art in view.get_marketing_atricles %}
+                    <li><a href="{{ mark_art.get_absolute_url }}">
+                        {{ mark_art.title }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </li>
+    <li class="list">
+        <a href="{% url 'leaders' %}">
+            Керівництво
+            <b></b>
+            <b></b>
+        </a>
+    </li>
+    </ul>
+    <a class="add-article" href="{% url 'add_article' %}">Інструкція з додавання статей в адмін панелі</a>
+</div>
+
+{% endcache %}

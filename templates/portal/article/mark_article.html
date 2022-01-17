@@ -1,0 +1,18 @@
+<title>Департамент Маркетингу</title>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="post-content">
+    {% for mark in marketing %}
+        <div class="article-top">
+        <p class="cats-name">{{ mark.dep }}: <span>{{ mark.title }}</span></p>
+        <p class="cats-date">Опубліковано: {{ mark.time_create }}</p>
+    </div>
+    <div class="article-content">
+        {{ mark.content | safe }}
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock content %}

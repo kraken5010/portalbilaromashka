@@ -1,0 +1,32 @@
+<section class="header">
+    <!-- Logo start -->
+    <a class="logo" href="{% url 'home' %}" title="На главну">
+        <div class="box">
+            <span style="--i:1;"><i>Portal</i><i>Bilaromashka</i></span>
+            <span style="--i:2;"><i>Portal</i><i>Bilaromashka</i></span>
+            <span style="--i:3;"><i>Portal</i><i>Bilaromashka</i></span>
+            <span style="--i:4;"><i>Portal</i><i>Bilaromashka</i></span>
+            <span style="--i:5;"><i>Portal</i><i>Bilaromashka</i></span>
+            <span style="--i:6;"><i>Portal</i><i>Bilaromashka</i></span>
+            <span style="--i:7;"><i>Portal</i><i>Bilaromashka</i></span>
+            <span style="--i:8;"><i>Portal</i><i>Bilaromashka</i></span>
+        </div>
+    </a>
+    <a class="on-main-page" href="{% url 'home' %}" title="На головну">На головну</a>
+    <!-- Logo end -->
+
+    <!-- Search Form start -->
+    <div class="search active">
+        <form action="{% url 'search' %}" method="get">
+            <div class="input">
+                <input type="search" placeholder="Пошук..." id="mysearch" name="q">
+            </div>
+            <button class="icon" type="submit" title="Знайти"></button>
+        </form>
+        <span class="clear-search" onclick="document.getElementById('mysearch').value = ''" title="Очистить"></span>
+    </div>
+    <!-- Search Form end -->
+
+</section>
+
+<div class="clear"></div>

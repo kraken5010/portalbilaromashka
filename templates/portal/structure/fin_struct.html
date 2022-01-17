@@ -1,0 +1,46 @@
+<title>Структура фінансового департаменту</title>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="present-dep">
+    <h1 class="dep-title">Структура фінансового департаменту</h1>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for fin in view.get_financial_structure %}
+                <div class="swiper-slide">
+                    <div class="card-box">
+                        {% if fin.photo %}
+                            <img src="{{ fin.photo.url}}" alt="">
+                        {% else %}
+                            <img src="{% static 'images/if_no_photo.png' %}" alt="">
+                        {% endif %}
+                        <div class="info-person">
+                            <h2 class="person-name">
+                                {{ fin.full_name }}
+                            </h2>
+                            <h2 class="position">
+                                {{ fin.position }}
+                            </h2>
+                            <p>моб.тел.: <a href="tel:{{ fin.phone }}">
+                                {{ fin.phone }}
+                            </a></p>
+                            <p>e-mail: <a href="mailto:{{ fin.email }}" target="_blank">
+                                {{ fin.email }}
+                            </a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+{% endblock content %}

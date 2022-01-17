@@ -1,0 +1,25 @@
+<title>Portal Bilaromashka</title>
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="content-home">
+        <ul class="article-list">
+            {% for art in object_list %}
+            <li class="article-item">
+                <div class="article-top">
+                    <p class="cats-name">{{ art.dep }}: <span>{{ art.title }}</span></p>
+                    <p class="cats-date">Опубліковано: {{ art.time_create }}</p>
+                </div>
+                <div class="article-content">
+                    <p class="text-article">{{ art.content | safe | truncatechars_html:200}}</p>
+                    <a class="show-art" href="{{ art.get_absolute_url }}" title="Відкрити">Детальніше</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% include 'include/pagination.html' %}
+
+    </section>
+{% endblock content %}

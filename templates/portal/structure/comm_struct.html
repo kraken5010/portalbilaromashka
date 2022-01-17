@@ -1,0 +1,45 @@
+<title>Структура комерційного департаменту</title>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="present-dep">
+    <h1 class="dep-title">Структура комерційного департаменту</h1>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for comm in view.get_commercial_structure %}
+                <div class="swiper-slide">
+                    <div class="card-box">
+                        {% if comm.photo %}
+                            <img src="{{ comm.photo.url}}" alt="">
+                        {% else %}
+                            <img src="{% static 'images/if_no_photo.png' %}" alt="">
+                        {% endif %}
+                        <div class="info-person">
+                            <h2 class="person-name">
+                                {{ comm.full_name }}
+                            </h2>
+                            <h2 class="position">
+                                {{ comm.position }}
+                            </h2>
+                            <p>моб.тел.: <a href="tel:{{ comm.phone }}">
+                                {{ comm.phone }}
+                            </a></p>
+                            <p>e-mail: <a href="mailto:{{ comm.email }}" target="_blank">
+                                {{ comm.email }}
+                            </a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+{% endblock content %}
