@@ -343,15 +343,24 @@ body{
 .sub-menu li{
     display: block;
 }
-.sub-menu li a, .dep-menu-list{
+.sub-menu li a{
     display: block !important;
     line-height: 30px !important;
-    color: #D2D2D2;
-
+    font-size: 1.1em;
 }
-
 .sub-menu.open{
     display: block;
+}
+.sub-menu .category{
+    white-space: nowrap;
+    display: block;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 1.1em;
+}
+.cat-articles a{
+    margin-left: 20px;
+    font-size: 1em !important;
 }
 /* Submenu end */
 /* Vertical Menu end */
