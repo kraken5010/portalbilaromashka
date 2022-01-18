@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
+
 /*Обнуление*/
 *{
     padding: 0;
     margin: 0;
     border: 0;
-    font-family: 'Poppins', sans-serif;
 }
 *,*:before,*:after{
     -moz-box-sizing: border-box;
@@ -51,9 +52,9 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 body{
     position: relative;
     height: 100vh;
-    font-family: 'Poppins', sans-serif;
     background: #fff;
     font-size: 16px;
+    font-family: 'Helvetica Neue', sans-serif;
 }
 .wrapper{
     min-height: 100%;
@@ -68,6 +69,7 @@ body{
 }
 /* Логотип Бочка start */
 .logo{
+    font-family: 'Poppins', sans-serif;
     width: 300px;
     height: 100%;
     display: flex;
@@ -96,16 +98,16 @@ body{
 .logo .box span{
     position: absolute;
     color: #fff;
-    font-size: 1.4em; /* смена шрифта */
+    font-size: 1.3em; /* смена шрифта */
     white-space: nowrap;
     text-transform: uppercase;
     font-weight: 900;
     padding: 0 10px;
     background: linear-gradient(90deg, transparent, rgba(0,0,0,0.5), transparent);
-    line-height: 1.1em; /* по умолчанию 0.76em */
+    line-height: 1em; /* по умолчанию 0.76em */
     transform-style: preserve-3d;
     text-shadow: 0 5px 10px rgba(0,0,0,0.25);
-    transform: translate(-50%,-50%) rotateX(calc(var(--i) * 45deg)) translateZ(24px); /* рассчет кол-ва и высоты отступов */
+    transform: translate(-50%,-50%) rotateX(calc(var(--i) * 45deg)) translateZ(22px); /* рассчет кол-ва и высоты отступов */
 }
 .logo .box span i:nth-child(1){
     font-style: initial;
@@ -354,7 +356,7 @@ body{
 .sub-menu .category{
     white-space: nowrap;
     display: block;
-    margin-bottom: 10px;
+    margin-top: 10px;
     color: #fff;
     font-size: 1.1em;
 }
@@ -398,7 +400,6 @@ body{
     float: right;
     font-size: 1.1em;
     line-height: 1.2em;
-    margin-top: 5px;
 }
 .article-content{
     padding: 10px;
@@ -431,6 +432,7 @@ body{
     float: right;
     margin-top: 20px;
     color: #fff;
+    font-size: 1.1em;
     background: var(--main-blue);
     padding: 5px 15px;
     border-radius: 5px;
