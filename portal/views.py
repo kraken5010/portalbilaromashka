@@ -271,6 +271,7 @@ class Search(Article, Structure, ListView):
             query_sets.append(MarketingArticle.objects.filter(title__iregex=q))
             query_sets.append(PersonnelArticle.objects.filter(title__iregex=q))
             query_sets.append(DevelopmentArticle.objects.filter(title__iregex=q))
+            query_sets.append(SecurityArticle.objects.filter(title__iregex=q))
 
             return list(chain(*query_sets))
 
