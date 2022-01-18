@@ -144,6 +144,20 @@
             </ul>
         </li>
     <li class="list">
+            <a>
+                Безпека
+                <b></b>
+                <b></b>
+            </a>
+            <ul class="sub-menu">
+                {% for sec_art in view.get_security_articles %}
+                    <li><a href="{{ sec_art.get_absolute_url }}">
+                        {{ sec_art.title }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </li>
+    <li class="list">
         <a href="{% url 'leaders' %}">
             Керівництво
             <b></b>

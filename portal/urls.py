@@ -14,6 +14,7 @@ urlpatterns = [
     path('it/<str:it_slug>/', ItArticleView.as_view(), name='it_article'),
     path('personnel/<str:pers_slug>/', PersonnelArticleView.as_view(), name='pers_article'),
     path('marketing/<str:mark_slug>/', MarketingArticleView.as_view(), name='mark_article'),
+    path('security/<str:sec_slug>/', SecurityArticleView.as_view(), name='sec_article'),
     path('leaders/', LeaderView.as_view(), name='leaders'),
     
     path('commercial_structure/', CommercialStructureView.as_view(), name='comm_structure'),

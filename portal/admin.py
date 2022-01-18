@@ -194,6 +194,17 @@ class MarketingArticleAdmin(admin.ModelAdmin, Publish):
     readonly_fields = ('time_create',)
 
 
+class SecurityArticleAdmin(admin.ModelAdmin, Publish):
+    """"Статьи"""
+    list_display = ('title', 'slug', 'time_create', 'draft')
+    search_fields = ('title',)
+    list_editable = ('draft',)
+    prepopulated_fields = {'slug': ('title',)}
+    actions = ['publish', 'unpublish']  # поля взяты из методов экшен ниже
+    form = ArticleAdminForm
+    readonly_fields = ('time_create',)
+
+
 class MarketingStructureAdmin(admin.ModelAdmin, ImageForAdmin):
     """"Сотрудники офиса"""
     list_display = ('full_name', 'position', 'phone', 'email', 'get_image')
@@ -261,6 +272,7 @@ admin.site.register(MarketingArticle, MarketingArticleAdmin)
 admin.site.register(MarketingStructure, MarketingStructureAdmin)
 admin.site.register(PersonnelArticle, PersonnelArticleAdmin)
 admin.site.register(PersonnelStructure, PersonnelStructureAdmin)
+admin.site.register(SecurityArticle, SecurityArticleAdmin)
 
 
 admin.site.register(Group, GroupAdmin)

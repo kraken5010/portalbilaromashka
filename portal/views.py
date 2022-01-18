@@ -40,6 +40,9 @@ class Article:
     def get_marketing_atricles(self):
         return MarketingArticle.objects.filter(draft=False)
 
+    def get_security_articles(self):
+        return SecurityArticle.objects.filter(draft=False)
+
 
 class Structure:
     """"Структуры департаментов"""
@@ -86,6 +89,7 @@ class PortalHome(Article, Structure, ListView):
         query_sets.append(PersonnelArticle.objects.filter(draft=False).select_related('dep'))
         query_sets.append(DevelopmentArticle.objects.filter(draft=False).select_related('dep'))
         query_sets.append(MarketingArticle.objects.filter(draft=False).select_related('dep'))
+        query_sets.append(SecurityArticle.objects.filter(draft=False).select_related('dep'))
 
         final_set = list(chain(*query_sets))
         final_set.sort(key=lambda x: x.time_create, reverse=True)
@@ -172,6 +176,16 @@ class MarketingArticleView(Article, ListView):
     def get_context_data(self,  **kwargs):
         context = super().get_context_data(**kwargs)
         context['marketing'] = MarketingArticle.objects.filter(slug=self.kwargs['mark_slug'], draft=False)
+        return context
+
+
+class SecurityArticleView(Article, ListView):
+    model = SecurityArticle
+    template_name = 'portal/article/security_article.html'
+
+    def get_context_data(self,  **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['security'] = SecurityArticle.objects.filter(slug=self.kwargs['sec_slug'], draft=False)
         return context
 
 

@@ -325,6 +325,26 @@ class PersonnelArticle(models.Model):
         verbose_name_plural = '<<Персонал>> статті'
 
 
+class SecurityArticle(models.Model):
+    """"Статьи департамента Безопасность"""
+    title = models.CharField('Заголовок', max_length=100)
+    slug = models.SlugField('URL', max_length=130, unique=True)
+    content = models.TextField('Контент')
+    time_create = models.DateField('Дата створення', default=date.today)
+    draft = models.BooleanField('Чернетка', default=False)
+    dep = models.ForeignKey(Department, on_delete=models.PROTECT, null=True, verbose_name='Департамент')
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('sec_article', kwargs={'sec_slug': self.slug})
+
+    class Meta:
+        verbose_name = '<<Безпека>> стаття'
+        verbose_name_plural = '<<Безпека>> статті'
+
+
 class PersonnelStructure(models.Model):
     """"Структура департамента Персонал"""
     full_name = models.CharField('ПІБ', max_length=150, help_text="Прізвище Ім'я По батькові")
