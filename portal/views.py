@@ -17,11 +17,19 @@ class Article:
     def get_financial_atricles(self):
         return FinancialArticle.objects.filter(draft=False)
 
+    def get_accounting_category(self):
+        """"Категории бухгалтерии"""
+        return AccountingCategoryArticle.objects.all()
+
     def get_accounting_atricles(self):
         return AccountingArticle.objects.filter(draft=False)
 
     def get_development_atricles(self):
         return DevelopmentArticle.objects.filter(draft=False)
+
+    def get_it_category(self):
+        """"Категории IT"""
+        return ItCategoryArticle.objects.all()
 
     def get_it_atricles(self):
         return ItArticle.objects.filter(draft=False)

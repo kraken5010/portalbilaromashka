@@ -115,6 +115,14 @@ class FinancialStructureAdmin(admin.ModelAdmin, ImageForAdmin):
     readonly_fields = ('get_image',)
 
 
+class AccountingCategoryArticleAdmin(admin.ModelAdmin):
+    """Категории департамента IT"""
+    list_display = ('id', 'name')
+    list_display_links = ('id', 'name')
+    search_fields = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
+
+
 class AccountingArticleAdmin(admin.ModelAdmin, Publish):
     """"Статьи"""
     list_display = ('title', 'slug', 'time_create', 'draft')
@@ -151,6 +159,14 @@ class DevelopmentStructureAdmin(admin.ModelAdmin, ImageForAdmin):
     readonly_fields = ('get_image',)
 
 
+class ItCategoryArticleAdmin(admin.ModelAdmin):
+    """Категории департамента IT"""
+    list_display = ('id', 'name')
+    list_display_links = ('id', 'name')
+    search_fields = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
+
+
 class ItArticleAdmin(admin.ModelAdmin, Publish):
     """"Статьи"""
     list_display = ('title', 'slug', 'time_create', 'draft')
@@ -161,6 +177,7 @@ class ItArticleAdmin(admin.ModelAdmin, Publish):
     form = ArticleAdminForm
     readonly_fields = ('time_create',)
     save_on_top = True
+
 
 class ItStructureAdmin(admin.ModelAdmin, ImageForAdmin):
     """"Сотрудники офиса"""
@@ -235,10 +252,12 @@ admin.site.register(OperationsArticle, OperationsArticleAdmin)
 admin.site.register(OperationsStructure, OperationsStructureAdmin)
 admin.site.register(FinancialArticle, FinancialArticleAdmin)
 admin.site.register(FinancialStructure, FinancialStructureAdmin)
+admin.site.register(AccountingCategoryArticle, AccountingCategoryArticleAdmin)
 admin.site.register(AccountingArticle, AccountingArticleAdmin)
 admin.site.register(AccountingStructure, AccountingStructureAdmin)
 admin.site.register(DevelopmentArticle, DevelopmentArticleAdmin)
 admin.site.register(DevelopmentStructure, DevelopmentStructureAdmin)
+admin.site.register(ItCategoryArticle, ItCategoryArticleAdmin)
 admin.site.register(ItArticle, ItArticleAdmin)
 admin.site.register(ItStructure, ItStructureAdmin)
 admin.site.register(MarketingArticle, MarketingArticleAdmin)

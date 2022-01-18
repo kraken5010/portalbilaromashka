@@ -133,6 +133,18 @@ class FinancialStructure(models.Model):
         ordering = ['id']
 
 
+class AccountingCategoryArticle(models.Model):
+    name = models.CharField('Бухгалтерія категорія', max_length=100, db_index=True)
+    slug = models.SlugField('URL', unique=True, db_index=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = '<<Бухгалтерія категорії>>'
+        ordering = ['id']
+
+
 class AccountingArticle(models.Model):
     """"Статьи департамента бухгалтерии"""
     title = models.CharField('Заголовок', max_length=100)
@@ -140,6 +152,7 @@ class AccountingArticle(models.Model):
     content = models.TextField('Контент')
     time_create = models.DateField('Дата створення', default=date.today)
     draft = models.BooleanField('Чернетка', default=False)
+    cat = models.ForeignKey(AccountingCategoryArticle, on_delete=models.PROTECT, null=True, verbose_name='Бухгалтерія категорія')
     dep = models.ForeignKey(Department, on_delete=models.PROTECT, null=True, verbose_name='Департамент')
 
     def __str__(self):
@@ -209,6 +222,18 @@ class DevelopmentStructure(models.Model):
         ordering = ['id']
 
 
+class ItCategoryArticle(models.Model):
+    name = models.CharField('IT категорія', max_length=100, db_index=True)
+    slug = models.SlugField('URL', unique=True, db_index=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = '<<IT категорії>>'
+        ordering = ['id']
+
+
 class ItArticle(models.Model):
     """"Статьи департамента IT"""
     title = models.CharField('Заголовок', max_length=100)
@@ -216,6 +241,7 @@ class ItArticle(models.Model):
     content = models.TextField('Контент')
     time_create = models.DateField('Дата створення', default=date.today)
     draft = models.BooleanField('Чернетка', default=False)
+    cat = models.ForeignKey(ItCategoryArticle, on_delete=models.PROTECT, null=True, verbose_name='IT категорія')
     dep = models.ForeignKey(Department, on_delete=models.PROTECT, null=True, verbose_name='Департамент')
 
     def __str__(self):

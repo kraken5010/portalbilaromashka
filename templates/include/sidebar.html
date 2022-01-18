@@ -1,6 +1,6 @@
 {% load cache %}
 
-{% cache 180 sidebar %}
+{% cache 1 sidebar %}
 
 <div class="nav">
     <ul class="menu">
@@ -42,11 +42,21 @@
             </a>
             <ul class="sub-menu">
             <li><a href="{% url 'acc_structure' %}">Структура департаменту</a></li>
-                {% for acc_art in view.get_accounting_atricles %}
-                    <li><a href="{{ acc_art.get_absolute_url }}">
-                        {{ acc_art.title }}
-                    </a></li>
-                {% endfor %}
+            {% for acc_cat in view.get_accounting_category %}
+                <li class="category">{{ acc_cat.name }}:
+                    <ul>
+                        {% for acc_art in view.get_accounting_atricles %}
+                            {% if acc_art.cat.name == acc_cat.name %}
+                                <li class="cat-articles">
+                                    <a href="{{ acc_art.get_absolute_url }}">
+                                        {{ acc_art.title }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
             </ul>
         </li>
         <li class="list">
@@ -86,12 +96,21 @@
             </a>
             <ul class="sub-menu">
             <li><a href="{% url 'it_structure' %}">Структура департаменту</a></li>
-                {% for it_art in view.get_it_atricles %}
-                    <li><a href="{{ it_art.get_absolute_url }}">
-                        {{ it_art.title }}
-                    </a></li>
+                {% for it_cat in view.get_it_category %}
+                    <li class="category">{{ it_cat.name }}:
+                        <ul class="">
+                            {% for it_art in view.get_it_atricles %}
+                                {% if it_art.cat.name == it_cat.name %}
+                                    <li class="cat-articles">
+                                        <a href="{{ it_art.get_absolute_url }}">
+                                            {{ it_art.title }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
                 {% endfor %}
-                <li><a href="http://apteka.fozzy.lan/webservice/WorkTimeError.php" target="_blank">Контроль рабочего времени</a></li>
             </ul>
         </li>
         <li class="list">
