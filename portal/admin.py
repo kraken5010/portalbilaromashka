@@ -58,7 +58,6 @@ class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     list_display_links = ('id', 'name')
     search_fields = ('name',)
-    prepopulated_fields = {'slug': ('name',)}
 
 
 class CommercialArticleAdmin(admin.ModelAdmin, Publish):
@@ -120,7 +119,6 @@ class AccountingCategoryArticleAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     list_display_links = ('id', 'name')
     search_fields = ('name',)
-    prepopulated_fields = {'slug': ('name',)}
 
 
 class AccountingArticleAdmin(admin.ModelAdmin, Publish):
@@ -164,7 +162,6 @@ class ItCategoryArticleAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     list_display_links = ('id', 'name')
     search_fields = ('name',)
-    prepopulated_fields = {'slug': ('name',)}
 
 
 class ItArticleAdmin(admin.ModelAdmin, Publish):

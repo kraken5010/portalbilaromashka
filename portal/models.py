@@ -6,13 +6,9 @@ from django.urls import reverse
 
 class Department(models.Model):
     name = models.CharField('Департаменти', max_length=100, db_index=True)
-    slug = models.SlugField('URL', unique=True, db_index=True)
 
     def __str__(self):
         return self.name
-
-    def get_absolute_url(self):
-        return reverse('department', kwargs={'dep_slug': self.slug})
 
     class Meta:
         verbose_name_plural = 'Департаменти'
@@ -135,7 +131,6 @@ class FinancialStructure(models.Model):
 
 class AccountingCategoryArticle(models.Model):
     name = models.CharField('Бухгалтерія категорія', max_length=100, db_index=True)
-    slug = models.SlugField('URL', unique=True, db_index=True)
 
     def __str__(self):
         return self.name
@@ -224,7 +219,6 @@ class DevelopmentStructure(models.Model):
 
 class ItCategoryArticle(models.Model):
     name = models.CharField('IT категорія', max_length=100, db_index=True)
-    slug = models.SlugField('URL', unique=True, db_index=True)
 
     def __str__(self):
         return self.name
