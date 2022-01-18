@@ -136,7 +136,7 @@ class AccountingCategoryArticle(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = '<<Бухгалтерія категорії>>'
+        verbose_name_plural = '<<Бухгалтерія>> категорії'
         ordering = ['id']
 
 
@@ -224,7 +224,7 @@ class ItCategoryArticle(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = '<<IT категорії>>'
+        verbose_name_plural = '<<IT>> категорії'
         ordering = ['id']
 
 
