@@ -20,7 +20,7 @@ class Article:
         return AccountingCategoryArticle.objects.all()
 
     def get_accounting_atricles(self):
-        return AccountingArticle.objects.filter(draft=False)
+        return AccountingArticle.objects.filter(draft=False).select_related('cat')
 
     def get_development_atricles(self):
         return DevelopmentArticle.objects.filter(draft=False)
@@ -30,7 +30,7 @@ class Article:
         return ItCategoryArticle.objects.all()
 
     def get_it_atricles(self):
-        return ItArticle.objects.filter(draft=False)
+        return ItArticle.objects.filter(draft=False).select_related('cat')
 
     def get_personnel_atricles(self):
         return PersonnelArticle.objects.filter(draft=False)
