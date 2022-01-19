@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    "debug_toolbar",
+    # "debug_toolbar",
     'ckeditor',
     'ckeditor_uploader',
     'portal',
@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'django_portal.urls'
@@ -168,16 +168,16 @@ CACHES = {
 }
 
 # Для debug_toolbar #
-import mimetypes
-
-mimetypes.add_type("application/javascript", ".js", True)
-
-DEBUG_TOOLBAR_CONFIG = {
-    "INTERCEPT_REDIRECTS": False,
-}
+# import mimetypes
+#
+# mimetypes.add_type("application/javascript", ".js", True)
+#
+# DEBUG_TOOLBAR_CONFIG = {
+#     "INTERCEPT_REDIRECTS": False,
+# }
 
 INTERNAL_IPS = [
-    "*",
+    "127.0.0.1",
 ]
 # end debug_toolbar #
 

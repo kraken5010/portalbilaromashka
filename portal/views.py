@@ -2,9 +2,7 @@ from django.shortcuts import render
 from itertools import chain
 from .models import *
 
-from django.views.generic import ListView, DetailView
-from django.views.generic.base import View
-
+from django.views.generic import ListView
 
 class Article:
     """Статьи из всех департаментов"""
