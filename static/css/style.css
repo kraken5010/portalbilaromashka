@@ -41,6 +41,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 :root {
     --main-blue: #836FB4;
     --main-yellow: #ECCB15;
+    --main-white: #fff;
     --sub-menu: #7b5fb4;
 }
 /* ROOT STYLES COLOR end */
@@ -52,7 +53,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 body{
     position: relative;
     height: 100vh;
-    background: #fff;
+    background: var(--main-white);
     font-size: 16px;
     font-family: 'Helvetica Neue', sans-serif;
 }
@@ -97,7 +98,7 @@ body{
 }
 .logo .box span{
     position: absolute;
-    color: #fff;
+    color: var(--main-white);
     font-size: 1.3em; /* смена шрифта */
     white-space: nowrap;
     text-transform: uppercase;
@@ -111,7 +112,7 @@ body{
 }
 .logo .box span i:nth-child(1){
     font-style: initial;
-    color: #fff;
+    color: var(--main-white);
 }
 .logo .box span i:nth-child(2){
     font-style: initial;
@@ -122,7 +123,7 @@ body{
 .on-main-page{
     font-size: 1.2em;
     padding: 5px 10px;
-    color: #fff;
+    color: var(--main-white);
     transition: 0.5s;
 }
 .on-main-page:hover{
@@ -274,7 +275,7 @@ body{
     cursor: pointer;
 }
 .menu .list a:hover{
-    color: #fff;
+    color: var(--main-white);
 }
 .menu .list.active{
     background: var(--sub-menu);
@@ -357,7 +358,7 @@ body{
     white-space: nowrap;
     display: block;
     margin-top: 10px;
-    color: #fff;
+    color: var(--main-white);
     font-size: 1.1em;
 }
 .cat-articles a{
@@ -394,7 +395,7 @@ body{
     font-size: 1.2em;
 }
 .article-top p:first-child span{
-    color: #fff;
+    color: var(--main-white);
 }
 .article-top p:last-child{
     float: right;
@@ -431,7 +432,7 @@ body{
 .article-list li.article-item a.show-art{
     float: right;
     margin-top: 20px;
-    color: #fff;
+    color: var(--main-white);
     font-size: 1.1em;
     background: var(--main-blue);
     padding: 5px 15px;
@@ -467,7 +468,7 @@ body{
     transition: 0.5s;
 }
 .num-pages a:hover{
-    color: #fff;
+    color: var(--main-white);
     background-color: var(--main-blue);
 }
 
@@ -497,7 +498,7 @@ body{
 
 /* Swiper Start */
 .swiper-button-next, .swiper-button-prev{
-    color: #fff;
+    color: var(--main-white);
     transition: 0.3s;
 }
 .swiper-button-next:hover, .swiper-button-prev:hover{
@@ -597,7 +598,7 @@ a.add-article{
     transition: 0.3s;
 }
 a.add-article:hover{
-    color: #fff;
+    color: var(--main-white);
 }
 .add-article-content h2{
     text-align: center;
