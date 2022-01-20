@@ -1,6 +1,6 @@
 {% load cache %}
 
-{% cache 180 sidebar %}
+{% cache 1 sidebar %}
 
 <div class="nav">
     <ul class="menu">
@@ -12,7 +12,7 @@
             </a>
             <ul class="sub-menu">
                 <li><a href="{% url 'comm_structure' %}">Структура департаменту</a></li>
-                {% for comm_art in view.get_commercial_atricles %}
+                {% for comm_art in commercial_atricles %}
                     <li><a href="{{ comm_art.get_absolute_url }}">
                         {{ comm_art.title }}
                     </a></li>
@@ -27,7 +27,7 @@
             </a>
             <ul class="sub-menu">
             <li><a href="{% url 'oper_structure' %}">Структура департаменту</a></li>
-                {% for oper_art in view.get_operations_atricles %}
+                {% for oper_art in operations_articles %}
                     <li><a href="{{ oper_art.get_absolute_url }}">
                         {{ oper_art.title }}
                     </a></li>
@@ -42,11 +42,11 @@
             </a>
             <ul class="sub-menu">
             <li><a href="{% url 'acc_structure' %}">Структура департаменту</a></li>
-            {% for acc_cat in view.get_accounting_category %}
+            {% for acc_cat in accounting_categories %}
                 <li class="category">{{ acc_cat.name }}:
                     <ul>
-                        {% for acc_art in view.get_accounting_atricles %}
-                            {% if acc_art.cat.name == acc_cat.name %}
+                        {% for acc_art in accounting_article %}
+                            {% if acc_art.cat == acc_cat %}
                                 <li class="cat-articles">
                                     <a href="{{ acc_art.get_absolute_url }}">
                                         {{ acc_art.title }}
@@ -67,7 +67,7 @@
                 </a>
                 <ul class="sub-menu">
                 <li><a href="{% url 'fin_structure' %}">Структура департаменту</a></li>
-                    {% for fin_art in view.get_financial_atricles %}
+                    {% for fin_art in financial_articles %}
                         <li><a href="{{ fin_art.get_absolute_url }}">{{ fin_art.title }}
                         </a></li>
                     {% endfor %}
@@ -81,7 +81,7 @@
             </a>
             <ul class="sub-menu">
             <li><a href="{% url 'dev_structure' %}">Структура департаменту</a></li>
-                {% for dev_art in view.get_development_atricles %}
+                {% for dev_art in development_articles %}
                     <li><a href="{{ dev_art.get_absolute_url }}">
                         {{ dev_art.title }}
                     </a></li>
@@ -96,11 +96,12 @@
             </a>
             <ul class="sub-menu">
             <li><a href="{% url 'it_structure' %}">Структура департаменту</a></li>
-                {% for it_cat in view.get_it_category %}
-                    <li class="category">{{ it_cat.name }}:
-                        <ul class="">
-                            {% for it_art in view.get_it_atricles %}
-                                {% if it_art.cat.name == it_cat.name %}
+
+                {% for cat in it_categories %}
+                    <li class="category">{{ cat.name }}:
+                        <ul>
+                            {% for it_art in it_articles %}
+                                {% if it_art.cat == cat %}
                                     <li class="cat-articles">
                                         <a href="{{ it_art.get_absolute_url }}">
                                             {{ it_art.title }}
@@ -111,6 +112,7 @@
                         </ul>
                     </li>
                 {% endfor %}
+
             </ul>
         </li>
         <li class="list">
@@ -121,7 +123,7 @@
             </a>
             <ul class="sub-menu">
             <li><a href="{% url 'pers_structure' %}">Структура департаменту</a></li>
-                {% for pers_art in view.get_personnel_atricles %}
+                {% for pers_art in personnel_articles %}
                     <li><a href="{{ pers_art.get_absolute_url }}">
                         {{ pers_art.title }}
                     </a></li>
@@ -136,7 +138,7 @@
             </a>
             <ul class="sub-menu">
             <li><a href="{% url 'mark_structure' %}">Структура департаменту</a></li>
-                {% for mark_art in view.get_marketing_atricles %}
+                {% for mark_art in marketing_articles %}
                     <li><a href="{{ mark_art.get_absolute_url }}">
                         {{ mark_art.title }}
                     </a></li>
@@ -150,7 +152,7 @@
                 <b></b>
             </a>
             <ul class="sub-menu">
-                {% for sec_art in view.get_security_articles %}
+                {% for sec_art in security_articles %}
                     <li><a href="{{ sec_art.get_absolute_url }}">
                         {{ sec_art.title }}
                     </a></li>

@@ -2,44 +2,8 @@ from django.shortcuts import render
 from itertools import chain
 from .models import *
 
-from django.views.generic import ListView
-
-class Article:
-    """Статьи из всех департаментов"""
-    def get_commercial_atricles(self):
-        return CommercialArticle.objects.filter(draft=False)
-
-    def get_operations_atricles(self):
-        return OperationsArticle.objects.filter(draft=False)
-
-    def get_financial_atricles(self):
-        return FinancialArticle.objects.filter(draft=False)
-
-    def get_accounting_category(self):
-        """"Категории бухгалтерии"""
-        return AccountingCategoryArticle.objects.all()
-
-    def get_accounting_atricles(self):
-        return AccountingArticle.objects.filter(draft=False).select_related('cat')
-
-    def get_development_atricles(self):
-        return DevelopmentArticle.objects.filter(draft=False)
-
-    def get_it_category(self):
-        """"Категории IT"""
-        return ItCategoryArticle.objects.all()
-
-    def get_it_atricles(self):
-        return ItArticle.objects.filter(draft=False).select_related('cat')
-
-    def get_personnel_atricles(self):
-        return PersonnelArticle.objects.filter(draft=False)
-
-    def get_marketing_atricles(self):
-        return MarketingArticle.objects.filter(draft=False)
-
-    def get_security_articles(self):
-        return SecurityArticle.objects.filter(draft=False)
+from django.views.generic import ListView, DetailView
+from django.views.generic.base import View
 
 
 class Structure:
@@ -72,8 +36,27 @@ class Structure:
         return MarketingStructure.objects.all()
 
 
+class Sidebar(Structure, ListView):
+    template_name = 'include/sidebar.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['commercial_articles'] = CommercialArticle.objects.filter(draft=False)
+        context['operations_articles'] = OperationsArticle.objects.filter(draft=False)
+        context['financial_articles'] = FinancialArticle.objects.filter(draft=False)
+        context['accounting_categories'] = AccountingCategoryArticle.objects.all()
+        context['accounting_articles'] = AccountingArticle.objects.filter(draft=False).select_related('cat')
+        context['development_articles'] = DevelopmentArticle.objects.filter(draft=False)
+        context['it_articles'] = ItArticle.objects.filter(draft=False).select_related('cat')
+        context['it_categories'] = ItCategoryArticle.objects.all()
+        context['personnel_articles'] = PersonnelArticle.objects.filter(draft=False)
+        context['marketing_articles'] = MarketingArticle.objects.filter(draft=False)
+        context['security_articles'] = SecurityArticle.objects.filter(draft=False)
+        return context
+
+
 # Представления статей департаментов #
-class PortalHome(Article, Structure, ListView):
+class PortalHome(Sidebar, Structure, ListView):
     template_name = 'portal/home.html'
     paginate_by = 8
 
@@ -97,7 +80,7 @@ class PortalHome(Article, Structure, ListView):
         return final_set
 
 
-class CommercialArticleView(Article, ListView):
+class CommercialArticleView(Sidebar, ListView):
     model = CommercialArticle
     template_name = 'portal/article/comm_article.html'
 
@@ -107,7 +90,7 @@ class CommercialArticleView(Article, ListView):
         return context
 
 
-class OperationsArticleView(Article, ListView):
+class OperationsArticleView(Sidebar, ListView):
     model = OperationsArticle
     template_name = 'portal/article/oper_article.html'
 
@@ -117,7 +100,7 @@ class OperationsArticleView(Article, ListView):
         return context
 
 
-class FinancialArticleView(Article, ListView):
+class FinancialArticleView(Sidebar, ListView):
     model = FinancialArticle
     template_name = 'portal/article/fin_article.html'
 
@@ -127,7 +110,7 @@ class FinancialArticleView(Article, ListView):
         return context
 
 
-class AccountingArticleView(Article, ListView):
+class AccountingArticleView(Sidebar, ListView):
     model = AccountingArticle
     template_name = 'portal/article/acc_article.html'
 
@@ -137,7 +120,7 @@ class AccountingArticleView(Article, ListView):
         return context
 
 
-class DevelopmentArticleView(Article, ListView):
+class DevelopmentArticleView(Sidebar, ListView):
     model = DevelopmentArticle
     template_name = 'portal/article/dev_article.html'
 
@@ -147,7 +130,7 @@ class DevelopmentArticleView(Article, ListView):
         return context
 
 
-class ItArticleView(Article, ListView):
+class ItArticleView(Sidebar, ListView):
     model = ItArticle
     template_name = 'portal/article/it_article.html'
 
@@ -157,7 +140,7 @@ class ItArticleView(Article, ListView):
         return context
 
 
-class PersonnelArticleView(Article, ListView):
+class PersonnelArticleView(Sidebar, ListView):
     model = PersonnelArticle
     template_name = 'portal/article/pers_article.html'
 
@@ -167,7 +150,7 @@ class PersonnelArticleView(Article, ListView):
         return context
 
 
-class MarketingArticleView(Article, ListView):
+class MarketingArticleView(Sidebar, ListView):
     model = MarketingArticle
     template_name = 'portal/article/mark_article.html'
 
@@ -177,7 +160,7 @@ class MarketingArticleView(Article, ListView):
         return context
 
 
-class SecurityArticleView(Article, ListView):
+class SecurityArticleView(Sidebar, ListView):
     model = SecurityArticle
     template_name = 'portal/article/security_article.html'
 
@@ -188,70 +171,70 @@ class SecurityArticleView(Article, ListView):
 
 
 # Представления структур департаментов #
-class CommercialStructureView(Structure, Article, ListView):
+class CommercialStructureView(Sidebar, Structure, ListView):
     template_name = 'portal/structure/comm_struct.html'
 
     def get_queryset(self):
         return CommercialStructure.objects.all()
 
 
-class OperationsStructureView(Structure, Article, ListView):
+class OperationsStructureView(Sidebar, Structure, ListView):
     template_name = 'portal/structure/oper_struct.html'
 
     def get_queryset(self):
         return OperationsStructure.objects.all()
 
 
-class FinancialStructureView(Structure, Article, ListView):
+class FinancialStructureView(Sidebar, Structure, ListView):
     template_name = 'portal/structure/fin_struct.html'
 
     def get_queryset(self):
         return FinancialStructure.objects.all()
 
 
-class AccountingStructureView(Structure, Article, ListView):
+class AccountingStructureView(Sidebar, Structure, ListView):
     template_name = 'portal/structure/acc_struct.html'
 
     def get_queryset(self):
         return AccountingStructure.objects.all()
 
 
-class DevelopmentStructureView(Structure, Article, ListView):
+class DevelopmentStructureView(Sidebar, Structure, ListView):
     template_name = 'portal/structure/dev_struct.html'
 
     def get_queryset(self):
         return DevelopmentStructure.objects.all()
 
 
-class ItStructureView(Structure, Article, ListView):
+class ItStructureView(Sidebar, Structure, ListView):
     template_name = 'portal/structure/it_struct.html'
 
     def get_queryset(self):
         return ItStructure.objects.all()
 
 
-class PersonnelStructureView(Structure, Article, ListView):
+class PersonnelStructureView(Sidebar, Structure, ListView):
     template_name = 'portal/structure/pers_struct.html'
 
     def get_queryset(self):
         return PersonnelStructure.objects.all()
 
 
-class MarketingStructureView(Structure, Article, ListView):
+class MarketingStructureView(Sidebar, Structure, ListView):
     template_name = 'portal/structure/mark_struct.html'
 
     def get_queryset(self):
         return MarketingStructure.objects.all()
 
 
-class LeaderView(Structure, Article, ListView):
+class LeaderView(Sidebar, Structure, ListView):
     template_name = 'portal/structure/leaders.html'
 
     def get_queryset(self):
         return Leader.objects.all()
 
 
-class Search(Article, Structure, ListView):
+class Search(Sidebar, Structure, ListView):
     """"Поиск статей по заголовку"""
     template_name = 'portal/search.html'
 
@@ -279,7 +262,8 @@ class Search(Article, Structure, ListView):
         return context
 
 
-class AddArticle(Article, ListView):
+class AddArticle(Sidebar, ListView):
+    """Страница инструкции по добавлению статей"""
     model = Department
     template_name = 'portal/instrukciya.html'
 
