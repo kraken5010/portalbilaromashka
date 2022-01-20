@@ -10,7 +10,7 @@
 
     <div class="swiper">
         <div class="swiper-wrapper">
-            {% for leader in view.get_leaders %}
+            {% for leader in object_list %}
                 <div class="swiper-slide">
                     <div class="card-box">
                         {% if leader.photo %}

@@ -10,7 +10,7 @@
 
     <div class="swiper">
         <div class="swiper-wrapper">
-            {% for oper in view.get_operations_structure %}
+            {% for oper in object_list %}
                 <div class="swiper-slide">
                     <div class="card-box">
                         {% if oper.photo %}

@@ -10,7 +10,7 @@
 
     <div class="swiper">
         <div class="swiper-wrapper">
-            {% for dev in view.get_development_structure %}
+            {% for dev in object_list %}
                 <div class="swiper-slide">
                     <div class="card-box">
                         {% if dev.photo %}

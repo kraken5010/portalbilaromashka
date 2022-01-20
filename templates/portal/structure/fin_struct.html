@@ -10,7 +10,7 @@
 
     <div class="swiper">
         <div class="swiper-wrapper">
-            {% for fin in view.get_financial_structure %}
+            {% for fin in object_list %}
                 <div class="swiper-slide">
                     <div class="card-box">
                         {% if fin.photo %}

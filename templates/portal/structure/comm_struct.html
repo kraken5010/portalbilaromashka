@@ -9,7 +9,7 @@
 
     <div class="swiper">
         <div class="swiper-wrapper">
-            {% for comm in view.get_commercial_structure %}
+            {% for comm in object_list %}
                 <div class="swiper-slide">
                     <div class="card-box">
                         {% if comm.photo %}

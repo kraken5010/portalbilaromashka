@@ -10,7 +10,7 @@
 
     <div class="swiper">
         <div class="swiper-wrapper">
-            {% for pers in view.get_personnel_structure %}
+            {% for pers in object_list %}
                 <div class="swiper-slide">
                     <div class="card-box">
                         {% if pers.photo %}
