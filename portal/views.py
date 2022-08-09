@@ -207,7 +207,6 @@ class Search(Sidebar, ListView):
     template_name = 'portal/search.html'
 
     def get_queryset(self):
-
         query_sets = []
 
         q = self.request.GET.get('q')

@@ -1,7 +1,5 @@
 {% load cache %}
 
-{% cache 180 sidebar %}
-
 <div class="nav">
     <ul class="menu">
         <li class="list">
@@ -169,5 +167,3 @@
     </ul>
     <a class="add-article" href="{% url 'add_article' %}">Інструкція з додавання статей в адмін панелі</a>
 </div>
-
-{% endcache %}

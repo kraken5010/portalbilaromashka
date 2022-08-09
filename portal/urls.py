@@ -1,6 +1,4 @@
 from django.urls import path
-from django.views.decorators.cache import cache_page
-
 from .views import *
 
 
@@ -27,5 +25,4 @@ urlpatterns = [
     path('marketing_structure/', MarketingStructureView.as_view(), name='mark_structure'),
     path("search/", Search.as_view(), name='search'),
     path('add_article/', AddArticle.as_view(), name='add_article'),
-
 ]
