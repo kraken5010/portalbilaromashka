@@ -1,7 +1,11 @@
 # django_portal
 PortalBilaromashka written in Django;
-All functionality is implemented in the admin panel:
 
+All functionality is implemented in the admin panel:
+https://portalbilaromashka.herokuapp.com/admin
+login: admin
+password: 1234
+Completed tables related to the IT department.
 
 python-3.10; Django-4.0;
 
