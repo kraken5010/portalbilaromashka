@@ -1,5 +1,7 @@
 # django_portal
 PortalBilaromashka written in Django;
+All functionality is implemented in the admin panel:
+
 
 python-3.10; Django-4.0;
 
